@@ -59,3 +59,11 @@ ul.theList {
   background-color: pink;
   cursor: pointer;
 }
+.todoListMain .theList li.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.todoListMain .theList li input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
