@@ -7,12 +7,14 @@ class TodoList extends Component {
 		this.state = {items: []};
 		this.addItem = this.addItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
+		this.toggleComplete = this.toggleComplete.bind(this);
 	}
 	addItem(e){
 		if(this._inputElement.value !== ""){
 			var newItem = {
 				text: this._inputElement.value, 
-				key: Date.now()
+				key: Date.now(),
+				completed: false
 			};
 	
 			this.setState((prevState) => {
@@ -35,6 +37,18 @@ class TodoList extends Component {
 			items: filteredItems
 		});
 	}
+	toggleComplete(key){
+		this.setState((prevState) => {
+			return {
+				items: prevState.items.map(function(item) {
+					if (item.key === key) {
+						return Object.assign({}, item, {completed: !item.completed});
+					}
+					return item;
+				})
+			};
+		});
+	}
 	render(){
 		return(
 			<div className="todoListMain">
@@ -44,7 +58,7 @@ class TodoList extends Component {
 			      </input>
 			      <button type="submit">add</button>
 			    </form>
-			    <TodoItems entries={this.state.items} delete={this.deleteItem} />
+			    <TodoItems entries={this.state.items} delete={this.deleteItem} toggle={this.toggleComplete} />
 			  </div>
 		        </div>
 		);
