@@ -19,3 +19,5 @@ replace the public and src folders with those in this repo.
 
 <h3>Results</h3>
 <img src="./result.png">
+
+<!-- pc-workflow-smoke -->
